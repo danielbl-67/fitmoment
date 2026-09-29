@@ -1,0 +1,96 @@
+<section class="catalogo-wrapper">
+  <!-- Pestañas de Filtros -->
+  <div class="tabs-container">
+    <button [class.active]="selectedCategory === 'todos'" (click)="setCategory('todos')">Todos</button>
+    <button [class.active]="selectedCategory === 'suplementacion'" (click)="setCategory('suplementacion')">Suplementación</button>
+    <button [class.active]="selectedCategory === 'fisioterapia'" (click)="setCategory('fisioterapia')">Fisioterapia</button>
+    <button [class.active]="selectedCategory === 'nutricion_deporte'" (click)="setCategory('nutricion_deporte')">Nutrición & Deporte</button>
+  </div>
+
+  <!-- Cuadrícula de Productos / Servicios -->
+  <div class="items-grid">
+    <div class="item-card" *ngFor="let item of filteredItems">
+      <div class="card-content">
+        <span class="badge" [ngClass]="item.type">{{ item.type }}</span>
+        <h3>{{ item.name }}</h3>
+        <p>{{ item.shortDesc }}</p>
+      </div>
+
+      <div class="card-actions">
+        <span class="price">{{ item.price.toFixed(2) }} €</span>
+        <button class="btn-primary" (click)="openModal(item)">
+          {{ item.type === 'servicio' ? 'Reservar Cita' : 'Encargar' }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Checkout / Reserva -->
+  <div class="modal-backdrop" *ngIf="selectedItem">
+    <div class="modal-card">
+      <button class="btn-close" (click)="closeModal()">✕</button>
+
+      <h2>{{ selectedItem.type === 'servicio' ? 'Reserva de Cita' : 'Encargo de Catálogo' }}</h2>
+      <p class="modal-subtitle">{{ selectedItem.name }} — {{ selectedItem.price.toFixed(2) }} €</p>
+
+      <form (ngSubmit)="submitOrder()">
+        <!-- Selector de Variante (para suplementos) -->
+        <div class="field-group" *ngIf="selectedItem.variants">
+          <label>Elige Sabor / Formato:</label>
+          <select [(ngModel)]="order.variant" name="variant">
+            <option *ngFor="let v of selectedItem.variants" [value]="v">{{ v }}</option>
+          </select>
+        </div>
+
+        <!-- Selector de Fecha/Hora (para fisioterapia/nutrición) -->
+        <div class="grid-two" *ngIf="selectedItem.type === 'servicio'">
+          <div class="field-group">
+            <label>Fecha sugerida:</label>
+            <input type="date" required [(ngModel)]="order.date" name="date">
+          </div>
+          <div class="field-group">
+            <label>Hora orientativa:</label>
+            <input type="time" required [(ngModel)]="order.time" name="time">
+          </div>
+        </div>
+
+        <!-- Selector de Cantidad (para productos) -->
+        <div class="field-group" *ngIf="selectedItem.type === 'producto'">
+          <label>Cantidad:</label>
+          <input type="number" min="1" [(ngModel)]="order.quantity" name="quantity">
+        </div>
+
+        <!-- Formulario Rápido de Contacto -->
+        <div class="field-group">
+          <label>Nombre y Apellidos:</label>
+          <input type="text" required placeholder="Ej: Marcos García" [(ngModel)]="order.fullName" name="fullName">
+        </div>
+
+        <div class="grid-two">
+          <div class="field-group">
+            <label>Teléfono (WhatsApp):</label>
+            <input type="tel" required placeholder="638676954" [(ngModel)]="order.phone" name="phone">
+          </div>
+          <div class="field-group">
+            <label>Email:</label>
+            <input type="email" required placeholder="correo@ejemplo.com" [(ngModel)]="order.email" name="email">
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label>Observaciones (opcional):</label>
+          <textarea rows="2" placeholder="Lesión previa, preferencias..." [(ngModel)]="order.notes" name="notes"></textarea>
+        </div>
+
+        <div class="order-summary">
+          <span>Pago: <strong>En el local</strong></span>
+          <span class="total-amount">{{ (selectedItem.price * order.quantity).toFixed(2) }} €</span>
+        </div>
+
+        <button type="submit" class="btn-submit">
+          Confirmar y Enviar vía WhatsApp
+        </button>
+      </form>
+    </div>
+  </div>
+</section>

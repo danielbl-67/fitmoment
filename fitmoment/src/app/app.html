@@ -1,0 +1,278 @@
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-content">
+    <div class="nav-brand">
+      <img src="logofitmoment.ico" alt="Fit Moment Logo" class="brand-logo" />
+      <span class="brand-f">FIT</span>
+      <span class="brand-m">MOMENT</span>
+    </div>
+    <div class="nav-links">
+      <button (click)="scrollToSection('inicio')">Inicio</button>
+      <button (click)="scrollToSection('suplementacion')">Suplementación</button>
+      <button (click)="scrollToSection('fisioterapia')">Fisioterapia</button>
+      <button (click)="scrollToSection('nutricion')">Nutrición & Deporte</button>
+    </div>
+    <a href="https://wa.me/34638676954?text=Hola%20Fit%20Moment,%20tengo%20una%20consulta." target="_blank" class="nav-cta">
+      Contactar
+    </a>
+  </div>
+</nav>
+
+<!-- 1. SECCIÓN INICIO / HERO -->
+<header id="inicio" class="hero-section">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-badge">Centro Integral de Rendimiento & Salud</span>
+    <h1 class="hero-title">
+      TU MEJOR VERSIÓN COMIENZA EN <br>
+      <span class="gradient-text">FIT MOMENT</span>
+    </h1>
+    <p class="hero-desc">
+      Unificamos las tres áreas clave para que consigas tus objetivos sin pérdidas de tiempo: 
+      <strong>suplementación deportiva de máxima pureza</strong>, 
+      <strong>fisioterapia clínica y deportiva</strong> y 
+      <strong>planes personalizados de nutrición y entrenamiento</strong>.
+    </p>
+
+    <div class="hero-buttons">
+      <button class="btn-primary-hero" (click)="scrollToSection('suplementacion')">Ver Suplementos</button>
+      <button class="btn-outline-hero" (click)="scrollToSection('fisioterapia')">Reservar Cita</button>
+    </div>
+
+    <!-- Cifras de confianza -->
+    <div class="hero-stats">
+      <div class="stat-card">
+        <h3>+100%</h3>
+        <p>Pureza y calidad certificada</p>
+      </div>
+      <div class="stat-card">
+        <h3>1 a 1</h3>
+        <p>Atención directa y especializada</p>
+      </div>
+      <div class="stat-card">
+        <h3>Pago Local</h3>
+        <p>Sin tarjeta online ni compromisos</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- 2. SECCIÓN SUPLEMENTACIÓN -->
+<section id="suplementacion" class="section-block">
+  <div class="section-header">
+    <span class="section-subtitle">Catálogo Oficial</span>
+    <h2>Suplementación Deportiva</h2>
+    <p>Marcas de alta asimilación, creatinas Creapure® e ingredientes testados para potenciar tu entrenamiento.</p>
+  </div>
+
+  <div class="grid-cards">
+    <div class="product-card" *ngFor="let item of suplementos">
+      <div class="card-img-wrap">
+        <img [src]="item.image" [alt]="item.name" loading="lazy" />
+        <span class="tag-badge">{{ item.badge }}</span>
+      </div>
+      <div class="card-body">
+        <h3>{{ item.name }}</h3>
+        <p>{{ item.shortDesc }}</p>
+        <div class="card-bottom">
+          <div>
+            <span class="price-label">Precio</span>
+            <span class="card-price">{{ item.price.toFixed(2) }} €</span>
+          </div>
+          <button class="btn-action" (click)="openModal(item)">Encargar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. SECCIÓN FISIOTERAPIA -->
+<section id="fisioterapia" class="section-block bg-darker">
+  <div class="section-header">
+    <span class="section-subtitle">Salud & Recuperación</span>
+    <h2>Planes de Fisioterapia</h2>
+    <p>Alivio del dolor, descarga muscular para deportistas y readaptación de lesiones en cabina equipada.</p>
+  </div>
+
+  <div class="grid-cards">
+    <div class="service-card" *ngFor="let plan of fisioterapiaPlanes">
+      <div class="card-img-wrap">
+        <img [src]="plan.image" [alt]="plan.name" loading="lazy" />
+        <span class="tag-badge badge-blue">{{ plan.badge }}</span>
+        <span class="duration-badge">{{ plan.duration }}</span>
+      </div>
+      <div class="card-body">
+        <h3>{{ plan.name }}</h3>
+        <p>{{ plan.shortDesc }}</p>
+
+        <ul class="features-list" *ngIf="plan.features">
+          <li *ngFor="let f of plan.features">✓ {{ f }}</li>
+        </ul>
+
+        <div class="card-bottom">
+          <div>
+            <span class="price-label">Por sesión</span>
+            <span class="card-price">{{ plan.price.toFixed(2) }} €</span>
+          </div>
+          <button class="btn-action btn-blue" (click)="openModal(plan)">Pedir Cita</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. SECCIÓN ASESORAMIENTO NUTRICIONAL Y DEPORTIVO -->
+<section id="nutricion" class="section-block">
+  <div class="section-header">
+    <span class="section-subtitle">Transformación & Hábitos</span>
+    <h2>Asesoramiento Nutricional y Deportivo</h2>
+    <p>Planes personalizados basados en antropometría real, cálculo de macronutrientes y rutinas adaptadas.</p>
+  </div>
+
+  <div class="grid-cards">
+    <div class="service-card highlight-card" *ngFor="let plan of nutricionPlanes">
+      <div class="card-img-wrap">
+        <img [src]="plan.image" [alt]="plan.name" loading="lazy" />
+        <span class="tag-badge badge-green">{{ plan.badge }}</span>
+        <span class="duration-badge">{{ plan.duration }}</span>
+      </div>
+      <div class="card-body">
+        <h3>{{ plan.name }}</h3>
+        <p>{{ plan.shortDesc }}</p>
+
+        <ul class="features-list" *ngIf="plan.features">
+          <li *ngFor="let f of plan.features">✓ {{ f }}</li>
+        </ul>
+
+        <div class="card-bottom">
+          <div>
+            <span class="price-label">Tarifa</span>
+            <span class="card-price">{{ plan.price.toFixed(2) }} €</span>
+          </div>
+          <button class="btn-action btn-green" (click)="openModal(plan)">Reservar Plan</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 
+ MODAL TRANSACCIONAL (CONFIGURACIÓN + CHECKOUT) 
+<div class="modal-backdrop" *ngIf="selectedItem">
+  <div class="modal-card">
+    <button class="btn-close" (click)="closeModal()">✕</button>
+
+    <div class="modal-header-info">
+      <span class="tag-badge" [ngClass]="selectedItem.type === 'servicio' ? 'badge-blue' : 'badge-green'">
+        {{ selectedItem.type === 'servicio' ? 'Reserva de Cita' : 'Encargo en Local' }}
+      </span>
+      <h2>{{ selectedItem.name }}</h2>
+      <p class="modal-price">{{ selectedItem.price.toFixed(2) }} €</p>
+    </div>
+
+    <form (ngSubmit)="submitOrder()">
+       Variantes para productos 
+      <div class="field-group" *ngIf="selectedItem.variants">
+        <label>Elige Sabor / Formato:</label>
+        <select [(ngModel)]="order.variant" name="variant">
+          <option *ngFor="let v of selectedItem.variants" [value]="v">{{ v }}</option>
+        </select>
+      </div>
+
+       Fecha/Hora para servicios 
+      <div class="grid-two" *ngIf="selectedItem.type === 'servicio'">
+        <div class="field-group">
+          <label>Fecha sugerida:</label>
+          <input type="date" required [(ngModel)]="order.date" name="date" />
+        </div>
+        <div class="field-group">
+          <label>Hora orientativa:</label>
+          <input type="time" required [(ngModel)]="order.time" name="time" />
+        </div>
+      </div>
+
+       Cantidad para productos 
+      <div class="field-group" *ngIf="selectedItem.type === 'producto'">
+        <label>Cantidad de botes/unidades:</label>
+        <input type="number" min="1" [(ngModel)]="order.quantity" name="quantity" />
+      </div>
+
+       Datos de contacto 
+      <div class="field-group">
+        <label>Nombre y Apellidos:</label>
+        <input type="text" required placeholder="Tu nombre completo" [(ngModel)]="order.fullName" name="fullName" />
+      </div>
+
+      <div class="grid-two">
+        <div class="field-group">
+          <label>Teléfono (WhatsApp):</label>
+          <input type="tel" required placeholder="638676954" [(ngModel)]="order.phone" name="phone" />
+        </div>
+        <div class="field-group">
+          <label>Correo electrónico:</label>
+          <input type="email" required placeholder="tu@email.com" [(ngModel)]="order.email" name="email" />
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label>Notas adicionales (lesión previa, alergias, horario alternativo):</label>
+        <textarea rows="2" placeholder="Cuéntanos brevemente tus necesidades..." [(ngModel)]="order.notes" name="notes"></textarea>
+      </div>
+
+      <div class="order-summary-box">
+        <div>
+          <span>Método de pago:</span>
+          <strong>En el establecimiento</strong>
+        </div>
+        <div>
+          <span>Total a abonar:</span>
+          <strong class="highlight-total">{{ (selectedItem.price * order.quantity).toFixed(2) }} €</strong>
+        </div>
+      </div>
+
+      <button type="submit" class="btn-submit">
+        Enviar Solicitud a WhatsApp
+      </button>
+    </form>
+  </div>
+</div>-->
+
+<!-- MODAL LEGAL -->
+<div class="modal-backdrop" *ngIf="showLegalModal">
+  <div class="modal-card legal-modal">
+    <button class="btn-close" (click)="showLegalModal = false">✕</button>
+    <h3>Información Legal y Políticas</h3>
+    <p><strong>1. Identidad:</strong> Fit Moment opera como centro y comercio multiespecialidad con canal de atención WhatsApp en el +34 638676954.</p>
+    <p><strong>2. Cancelaciones:</strong> Las reservas de fisioterapia y nutrición deben cancelarse con un mínimo de 24 horas de antelación para liberar el turno.</p>
+    <p><strong>3. Forma de cobro:</strong> No se realizan cobros anticipados en esta web. El abono se hace en efectivo o tarjeta directamente en el local.</p>
+    <p><strong>4. Privacidad (RGPD):</strong> Tus datos únicamente se utilizan para procesar tu encargo o coordinar la cita agendada.</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="main-footer">
+  <div class="footer-content">
+    <div class="footer-brand">
+      <h3>FIT MOMENT</h3>
+      <p>Suplementación · Fisioterapia · Nutrición y Deporte</p>
+      <p class="phone-link">Tel: <strong>+34 638676954</strong></p>
+    </div>
+    <div class="footer-links">
+      <button (click)="showLegalModal = true">Aviso Legal & Privacidad</button>
+      <button (click)="showLegalModal = true">Política de Cancelaciones</button>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Fit Moment. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<!-- BARRA FLOTANTE FIJA -->
+<aside class="quick-floating-bar">
+  <a href="https://wa.me/34638676954?text=Hola%20Fit%20Moment,%20tengo%20una%20consulta." target="_blank" class="bar-btn wa-btn">
+    WhatsApp Directo
+  </a>
+  <a href="https://maps.google.com/?q=Fit+Moment" target="_blank" class="bar-btn map-btn">
+    Cómo Llegar
+  </a>
+</aside>
