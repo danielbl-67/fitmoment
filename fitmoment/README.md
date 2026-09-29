@@ -1,52 +1,59 @@
-# Fit Moment — Web & Plataforma Transaccional
+# Fitmoment
 
-Plataforma web moderna y modular orientada a la conversión directa para negocio local y servicios de salud/rendimiento deportivo: **Suplementación**, **Fisioterapia** y **Asesoramiento Nutricional y Deportivo**.
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.0.
 
----
+## Development server
 
-## Características Principales
+To start a local development server, run:
 
-- **Diseño Dark Mode de Alto Rendimiento:** Paleta corporativa con fondos carbón (`#0B0F12`, `#12181F`) y acentos neón en Cyan (`#00E5FF`) y Verde Lima (`#10E85D`).
-- **Flujo Transaccional Integrado:**
-  - Selector rápido de variantes (sabores y formatos) para suplementación deportiva.
-  - Selector visual de fecha y hora orientativa para citas de fisioterapia y consultas nutricionales.
-  - Confirmación directa vía **WhatsApp (+34 638676954)** con cálculo de total e indicación de abono presencial en local.
-- **Acceso Rápido Flotante:** Barra inferior fija con enlaces directos a WhatsApp y ubicación física en Google Maps.
-- **Cumplimiento Legal:** Modal integrado con Políticas de Privacidad (RGPD), Aviso Legal y Condiciones de Cancelación.
+```bash
+ng serve
+```
 
----
+Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-## Tecnologías Utilizadas
-Framework: Angular (Standalone Components)
+## Code scaffolding
 
-Lenguaje: TypeScript
+Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
 
-Estilos: CSS3 nativo optimizado / Tailwind CSS
+```bash
+ng generate component component-name
+```
 
-Iconografía y Branding: SVG vectorial responsive
+For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
 
-Despliegue: Vercel
+```bash
+ng generate --help
+```
 
-## Canales de Atención & Contacto
-WhatsApp / Teléfono: +34 638676954
+## Building
 
-Instagram: @fitmoment.official
+To build the project run:
 
-Modelo de transacción: Encargo/reserva web directa con confirmación instantánea y pago en el local físico.
+```bash
+ng build
+```
 
-## Estructura del Proyecto
+This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
 
-```text
-fitmoment/
-├── src/
-│   ├── app/
-│   │   ├── app.ts                 # Lógica de componentes, catálogo, filtros y checkout
-│   │   ├── app.html               # Vistas: Hero, Suplementación, Fisioterapia, Nutrición y Modales
-│   │   └── app.css                # Estilos visuales del frontend
-│   ├── public/
-│   │   ├── favicon.svg            # Isotipo oficial e icono de pestaña en SVG vectorial
-│   │   └── logo-fitmoment.svg     # Logotipo vectorial para branding
-│   ├── styles.css                 # Reset global y estilos base
-│   └── index.html                 # Punto de entrada HTML con metadata y favicon
-├── angular.json                   # Configuración del proyecto y presupuestos de build
-└── package.json                   # Dependencias y scripts
+## Running unit tests
+
+To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+
+```bash
+ng test
+```
+
+## Running end-to-end tests
+
+For end-to-end (e2e) testing, run:
+
+```bash
+ng e2e
+```
+
+Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+
+## Additional Resources
+
+For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
