@@ -9,6 +9,7 @@ import { Item } from '../item.model';
   templateUrl: './fisioterapia.html',
   styleUrls: ['./fisioterapia.css']
 })
+
 export class Fisioterapia {
   @Output() onSelect = new EventEmitter<Item>();
 

@@ -25,6 +25,7 @@ export class Asesoramiento {
       badge: 'Punto de Partida',
       features: ['Menús adaptados a tus gustos', 'Lista de la compra recomendada', 'Estrategia de suplementación']
     },
+    
     {
       id: 'ND-02',
       type: 'servicio',

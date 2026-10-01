@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './modal-legal.html',
   styleUrls: ['./modal-legal.css']
 })
+
 export class ModalLegal {
   // Permite que el padre le pase si está abierto, o abrirlo internamente
   @Input() showLegalModal: boolean = false;

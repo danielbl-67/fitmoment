@@ -9,6 +9,7 @@ import { Item } from '../item.model';
   templateUrl: './suplementacion.html',
   styleUrls: ['./suplementacion.css']
 })
+
 export class Suplementacion {
   @Output() onSelect = new EventEmitter<Item>();
 

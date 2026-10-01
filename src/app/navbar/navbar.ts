@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './navbar.html',
   styleUrl: './navbar.css'
 })
+
 export class Navbar {
   isMenuOpen: boolean = false;
 

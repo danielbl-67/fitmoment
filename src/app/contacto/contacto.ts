@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './contacto.html',
   styleUrl: './contacto.css'
 })
+
 export class Contacto {
   phone: string = '+34 638676954';
   email: string = 'info@fitmoment.es';

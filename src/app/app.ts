@@ -92,6 +92,7 @@ export class App {
       msg += `*Hora sugerida:* ${this.order.time || 'A concretar'}\n`;
     }
 
+    
     msg += `*Total estimado:* ${total} € (Abono en local)\n\n`;
     msg += `*Datos del Cliente:*\n`;
     msg += `- Nombre: ${this.order.fullName}\n`;
