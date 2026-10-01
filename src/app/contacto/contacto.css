@@ -1,0 +1,187 @@
+:host {
+  display: block;
+}
+
+.contacto-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 5rem 1.5rem 4rem;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto 3rem;
+}
+
+.section-subtitle {
+  color: #00E5FF;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+}
+
+.section-header h2 {
+  font-size: clamp(2rem, 4vw, 2.7rem);
+  font-weight: 900;
+  margin: 0.3rem 0 0.8rem;
+  color: #FFFFFF;
+}
+
+.section-header p {
+  color: #94A3B8;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* Grilla 2 columnas */
+.contacto-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: stretch;
+}
+
+@media (max-width: 860px) {
+  .contacto-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Lista de canales */
+.contacto-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-card {
+  background: #12181F;
+  border: 1px solid #1E293B;
+  border-radius: 1rem;
+  padding: 1.15rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(0, 229, 255, 0.4);
+  box-shadow: 0 8px 24px rgba(0, 229, 255, 0.08);
+}
+
+.card-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.wa-icon {
+  background: rgba(16, 232, 93, 0.15);
+  color: #10E85D;
+  border: 1px solid rgba(16, 232, 93, 0.3);
+}
+
+.ig-icon {
+  background: rgba(225, 48, 108, 0.15);
+  color: #E1306C;
+  border: 1px solid rgba(225, 48, 108, 0.3);
+}
+
+.email-icon {
+  background: rgba(234, 67, 53, 0.15);
+  color: #EA4335;
+  border: 1px solid rgba(234, 67, 53, 0.3);
+}
+
+.map-pin-icon {
+  background: rgba(0, 229, 255, 0.15);
+  color: #00E5FF;
+  border: 1px solid rgba(0, 229, 255, 0.3);
+}
+
+.card-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: #64748B;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.card-text strong {
+  color: #FFFFFF;
+  font-size: 1rem;
+  margin-top: 0.15rem;
+}
+
+.card-text small {
+  color: #94A3B8;
+  font-size: 0.78rem;
+  margin-top: 0.2rem;
+}
+
+.link-maps {
+  color: #00E5FF;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+  margin-top: 0.35rem;
+  display: inline-block;
+  transition: text-decoration 0.2s;
+}
+
+.link-maps:hover {
+  text-decoration: underline;
+}
+
+/* Contenedor del Mapa */
+.contacto-mapa-wrap {
+  position: relative;
+  background: #12181F;
+  border: 1px solid #1E293B;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  min-height: 380px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.map-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(11, 15, 18, 0.9);
+  color: #00E5FF;
+  border: 1px solid rgba(0, 229, 255, 0.35);
+  padding: 0.3rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  z-index: 10;
+  backdrop-filter: blur(4px);
+}
+
+.map-iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 380px;
+  filter: invert(90%) hue-rotate(180deg) contrast(1.1) brightness(0.9);
+  transition: filter 0.3s ease;
+}
+
+.contacto-mapa-wrap:hover .map-iframe {
+  filter: none;
+}

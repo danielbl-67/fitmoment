@@ -1,0 +1,35 @@
+
+<!-- 4. SECCIÓN ASESORAMIENTO NUTRICIONAL Y DEPORTIVO -->
+<section id="nutricion" class="section-block">
+  <div class="section-header">
+    <span class="section-subtitle">Transformación & Hábitos</span>
+    <h2>Asesoramiento Nutricional y Deportivo</h2>
+    <p>Planes personalizados basados en antropometría real, cálculo de macronutrientes y rutinas adaptadas.</p>
+  </div>
+
+  <div class="grid-cards">
+    <div class="service-card highlight-card" *ngFor="let plan of nutricionPlanes">
+      <div class="card-img-wrap">
+        <img [src]="plan.image" [alt]="plan.name" loading="lazy" />
+        <span class="tag-badge badge-green">{{ plan.badge }}</span>
+        <span class="duration-badge">{{ plan.duration }}</span>
+      </div>
+      <div class="card-body">
+        <h3>{{ plan.name }}</h3>
+        <p>{{ plan.shortDesc }}</p>
+
+        <ul class="features-list" *ngIf="plan.features">
+          <li *ngFor="let f of plan.features">✓ {{ f }}</li>
+        </ul>
+
+        <div class="card-bottom">
+          <div>
+            <span class="price-label">Tarifa</span>
+            <span class="card-price">{{ plan.price.toFixed(2) }} €</span>
+          </div>
+          <button class="btn-action btn-green" (click)="openModal(plan)">Reservar Plan</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,47 @@
+<nav class="navbar">
+  <div class="nav-content">
+    
+    <!-- Logo e Identidad de Marca -->
+    <div class="nav-brand" (click)="scrollToSection('inicio')">
+      <img src="logofitmoment.ico" alt="Fit Moment Logo" class="nav-logo" />
+      <div class="brand-text">
+        <span class="brand-f">FIT</span>
+        <span class="brand-m">MOMENT</span>
+      </div>
+    </div>
+
+    <!-- Enlaces de navegación en escritorio -->
+    <div class="nav-links">
+      <button (click)="scrollToSection('inicio')">Inicio</button>
+      <button (click)="scrollToSection('suplementacion')">Suplementación</button>
+      <button (click)="scrollToSection('fisioterapia')">Fisioterapia</button>
+      <button (click)="scrollToSection('asesoramiento')">Asesoramiento</button>
+      <button (click)="scrollToSection('contacto')">Contacto</button>
+    </div>
+
+    <!-- Botón directo de acción -->
+    <a href="https://wa.me/34638676954?text=Hola%20Fit%20Moment,%20tengo%20una%20consulta." target="_blank" class="nav-cta">
+      WhatsApp
+    </a>
+
+    <!-- Botón hamburguesa para móviles -->
+    <button class="menu-toggle" (click)="toggleMenu()" aria-label="Abrir menú">
+      <span class="bar" [class.open]="isMenuOpen"></span>
+      <span class="bar" [class.open]="isMenuOpen"></span>
+      <span class="bar" [class.open]="isMenuOpen"></span>
+    </button>
+  </div>
+
+  <!-- Menú desplegable en móvil -->
+  <div class="mobile-drawer" [class.show]="isMenuOpen">
+   <button (click)="scrollToSection('inicio')">Inicio</button>
+      <button (click)="scrollToSection('suplementacion')">Suplementación</button>
+      <button (click)="scrollToSection('fisioterapia')">Fisioterapia</button>
+      <button (click)="scrollToSection('asesoramiento')">Asesoramiento</button>
+      <button (click)="scrollToSection('contacto')">Contacto</button>
+      <!-- Botón directo de acción -->
+    <a href="https://wa.me/34638676954?text=Hola%20Fit%20Moment,%20tengo%20una%20consulta." target="_blank" class="nav-cta">
+      WhatsApp
+    </a>
+  </div>
+</nav>

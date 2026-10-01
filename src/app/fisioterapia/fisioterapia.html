@@ -1,0 +1,34 @@
+<!-- 3. SECCIÓN FISIOTERAPIA -->
+<section id="fisioterapia" class="section-block bg-darker">
+  <div class="section-header">
+    <span class="section-subtitle">Salud & Recuperación</span>
+    <h2>Planes de Fisioterapia</h2>
+    <p>Alivio del dolor, descarga muscular para deportistas y readaptación de lesiones en cabina equipada.</p>
+  </div>
+
+  <div class="grid-cards">
+    <div class="service-card" *ngFor="let plan of fisioterapiaPlanes">
+      <div class="card-img-wrap">
+        <img [src]="plan.image" [alt]="plan.name" loading="lazy" />
+        <span class="tag-badge badge-blue">{{ plan.badge }}</span>
+        <span class="duration-badge">{{ plan.duration }}</span>
+      </div>
+      <div class="card-body">
+        <h3>{{ plan.name }}</h3>
+        <p>{{ plan.shortDesc }}</p>
+
+        <ul class="features-list" *ngIf="plan.features">
+          <li *ngFor="let f of plan.features">✓ {{ f }}</li>
+        </ul>
+
+        <div class="card-bottom">
+          <div>
+            <span class="price-label">Por sesión</span>
+            <span class="card-price">{{ plan.price.toFixed(2) }} €</span>
+          </div>
+          <button class="btn-action btn-blue" (click)="openModal(plan)">Pedir Cita</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

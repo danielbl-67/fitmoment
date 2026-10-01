@@ -1,0 +1,28 @@
+<!-- 2. SECCIÓN SUPLEMENTACIÓN -->
+<section id="suplementacion" class="section-block">
+  <div class="section-header">
+    <span class="section-subtitle">Catálogo Oficial</span>
+    <h2>Suplementación Deportiva</h2>
+    <p>Marcas de alta asimilación, creatinas Creapure® e ingredientes testados para potenciar tu entrenamiento.</p>
+  </div>
+
+  <div class="grid-cards">
+    <div class="product-card" *ngFor="let item of suplementos">
+      <div class="card-img-wrap">
+        <img [src]="item.image" [alt]="item.name" loading="lazy" />
+        <span class="tag-badge">{{ item.badge }}</span>
+      </div>
+      <div class="card-body">
+        <h3>{{ item.name }}</h3>
+        <p>{{ item.shortDesc }}</p>
+        <div class="card-bottom">
+          <div>
+            <span class="price-label">Precio</span>
+            <span class="card-price">{{ item.price.toFixed(2) }} €</span>
+          </div>
+          <button class="btn-action" (click)="openModal(item)">Encargar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
