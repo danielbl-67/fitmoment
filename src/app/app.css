@@ -89,6 +89,7 @@
   min-height: 80vh;
   display: flex;
   align-items: center;
+  padding-top: 6rem;
   justify-content: center;
   text-align: center;
   padding: 4rem 1.5rem;
