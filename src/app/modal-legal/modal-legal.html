@@ -1,12 +1,84 @@
-<!-- MODAL LEGAL -->
- 
 <div class="modal-backdrop" *ngIf="showLegalModal">
   <div class="modal-card legal-modal">
-    <button class="btn-close" (click)="closeModal()">✕</button>
-    <h3>Información Legal y Políticas</h3>
-    <p><strong>1. Identidad:</strong> Fit Moment opera como centro y comercio multiespecialidad con canal de atención WhatsApp en el +34 638676954.</p>
-    <p><strong>2. Cancelaciones:</strong> Las reservas de fisioterapia y nutrición deben cancelarse con un mínimo de 24 horas de antelación para liberar el turno.</p>
-    <p><strong>3. Forma de cobro:</strong> No se realizan cobros anticipados en esta web. El abono se hace en efectivo o tarjeta directamente en el local.</p>
-    <p><strong>4. Privacidad (RGPD):</strong> Tus datos únicamente se utilizan para procesar tu encargo o coordinar la cita agendada.</p>
+    <button class="btn-close" (click)="closeModal()" aria-label="Cerrar modal">✕</button>
+
+    <!-- Selector de pestañas -->
+    <div class="legal-tabs">
+      <button [class.active]="activeTab === 'aviso'" (click)="setTab('aviso')">
+        Aviso Legal
+      </button>
+      <button [class.active]="activeTab === 'privacidad'" (click)="setTab('privacidad')">
+        Privacidad
+      </button>
+      <button [class.active]="activeTab === 'cancelaciones'" (click)="setTab('cancelaciones')">
+        Cancelaciones
+      </button>
+    </div>
+
+    <div class="legal-body">
+
+      <!-- PESTAÑA 1: AVISO LEGAL -->
+      <!-- PESTAÑA 1: AVISO LEGAL -->
+      <section *ngIf="activeTab === 'aviso'" class="legal-item">
+        <span class="legal-tag">Información General</span>
+        <h3>Aviso Legal y LSSI-CE</h3>
+        
+        <p>
+          <strong>1. Datos identificativos:</strong> En cumplimiento del artículo 10 de la Ley 34/2002 (LSSI-CE), se informa que este sitio web es titularidad de <strong>FITMOMENT</strong>, con NIF [NIF/CIF], con domicilio en [Dirección del centro, Espartinas, Sevilla], teléfono <strong>+34 638676954</strong> y correo electrónico <strong>info@fitmoment.es</strong>.
+        </p>
+
+        <p>
+          <strong>2. Objeto:</strong> Este sitio web tiene una finalidad exclusivamente orientativa y de escaparate digital para dar a conocer los productos y servicios ofrecidos por Fit Moment. No constituye una tienda virtual ni plataforma de contratación a distancia.
+        </p>
+
+        <p>
+          <strong>3. Enlaces a terceros:</strong> Las solicitudes y reservas se coordinan de forma voluntaria a través de la aplicación externa WhatsApp. Fit Moment no se responsabiliza del tratamiento de datos o condiciones de uso de plataformas de terceros ajenas.
+        </p>
+
+        <p>
+          <strong>4. Precios y operaciones:</strong> Las tarifas son informativas (IVA incluido). El pago y la adquisición definitiva de productos o servicios se realiza de forma presencial en las instalaciones del centro.
+        </p>
+
+        <p>
+          <strong>5. Propiedad intelectual:</strong> Queda prohibida la reproducción total o parcial de los contenidos, logotipos e imágenes sin autorización previa.
+        </p>
+
+        <p>
+          <strong>6. Ley y jurisdicción:</strong> Las presentes condiciones se rigen por la normativa española, sometiéndose cualquier discrepancia a los Juzgados y Tribunales de Sevilla.
+        </p>
+      </section>
+
+      <!-- PESTAÑA 2: POLÍTICA DE PRIVACIDAD -->
+      <section *ngIf="activeTab === 'privacidad'" class="legal-item">
+        <span class="legal-tag">Protección de Datos (RGPD)</span>
+        <h3>Política de Privacidad</h3>
+        <p>
+          <strong>Sin tratamiento de datos en el servidor web:</strong> Este sitio web <strong>no recoge, procesa ni almacena datos personales</strong> de los usuarios en bases de datos o servidores propios. No utilizamos cookies de rastreo comercial ni formularios vinculados a bases de datos.
+        </p>
+        <p>
+          <strong>Canal de comunicación externo (WhatsApp):</strong> Cuando decides pulsar en nuestros enlaces para consultar dudas o agendar citas, la conversación se inicia en la aplicación externa <strong>WhatsApp</strong>. Los datos que voluntariamente compartas en dicho chat (nombre, teléfono o preferencias de cita) se utilizan estrictamente para atender tu consulta presencial o encargo en local, rigiéndose por las políticas de privacidad de Meta/WhatsApp.
+        </p>
+      </section>
+
+      <!-- PESTAÑA 3: POLÍTICA DE CANCELACIONES -->
+      <section *ngIf="activeTab === 'cancelaciones'" class="legal-item">
+        <span class="legal-tag">Gestión de Citas</span>
+        <h3>Política de Cancelaciones y Modificaciones</h3>
+        <p>
+          Para garantizar la calidad de la atención y respetar la agenda tanto de los profesionales de fisioterapia y nutrición como del resto de clientes:
+        </p>
+        <p>
+          <strong>Aviso mínimo de 24 horas:</strong> Cualquier cancelación o cambio de horario de una sesión de fisioterapia o asesoramiento debe comunicarse por WhatsApp o llamada con un mínimo de <strong>24 horas de antelación</strong> para permitir que otro usuario aproveche el turno.
+        </p>
+        <p>
+          <strong>Bonos de sesiones:</strong> Los bonos adquiridos en el centro tienen una validez de 6 meses desde su fecha de emisión y pueden ser transferibles a familiares directos notificándolo previamente.
+        </p>
+      </section>
+
+    </div>
+
+    <div class="legal-footer">
+      <button class="btn-entendido" (click)="closeModal()">Cerrar</button>
+    </div>
   </div>
 </div>

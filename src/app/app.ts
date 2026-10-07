@@ -3,13 +3,13 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Item } from './item.model';
 
-// Importación de componentes modulares
+// Componentes modulares
+import { Navbar } from './navbar/navbar';
 import { Suplementacion } from './suplementacion/suplementacion';
 import { Fisioterapia } from './fisioterapia/fisioterapia';
 import { Asesoramiento } from './asesoramiento/asesoramiento';
-import { ModalLegal } from './modal-legal/modal-legal';
-import { Navbar } from './navbar/navbar';
 import { Contacto } from './contacto/contacto';
+import { ModalLegal, LegalTab } from './modal-legal/modal-legal';
 
 export interface UserOrder {
   fullName: string;
@@ -28,18 +28,19 @@ export interface UserOrder {
   imports: [
     CommonModule,
     FormsModule,
-    Suplementacion,
     Navbar,
+    Suplementacion,
     Fisioterapia,
     Asesoramiento,
-    ModalLegal,
-    Contacto
-],
+    Contacto,
+    ModalLegal
+  ],
   templateUrl: './app.html',
-  styleUrl: './app.css' // Angular 19 usa styleUrl en singular
+  styleUrl: './app.css'
 })
 export class App {
   showLegalModal: boolean = false;
+  activeLegalTab: LegalTab = 'aviso';
   selectedItem: Item | null = null;
 
   order: UserOrder = {
@@ -52,6 +53,11 @@ export class App {
     variant: '',
     quantity: 1
   };
+
+  openLegal(tab: LegalTab): void {
+    this.activeLegalTab = tab;
+    this.showLegalModal = true;
+  }
 
   openModal(item: Item): void {
     this.selectedItem = item;
@@ -92,7 +98,6 @@ export class App {
       msg += `*Hora sugerida:* ${this.order.time || 'A concretar'}\n`;
     }
 
-    
     msg += `*Total estimado:* ${total} € (Abono en local)\n\n`;
     msg += `*Datos del Cliente:*\n`;
     msg += `- Nombre: ${this.order.fullName}\n`;

@@ -53,7 +53,7 @@ export class Suplementacion {
       name: 'Crema de Cacahuete Tostada 100% (1kg)',
       shortDesc: 'Textura cremosa natural, sin azúcares añadidos ni aceite de palma.',
       price: 7.90,
-      image: 'https://images.unsplash.com/photo-1588710929895-d8fcb6a38217?auto=format&fit=crop&w=800&q=80',
+      image: 'https://plus.unsplash.com/premium_photo-1701210417955-d1b61e1dc9eb?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       badge: '100% Natural',
       variants: ['Smooth (Suave)', 'Crunchy (Crujiente)']
     },

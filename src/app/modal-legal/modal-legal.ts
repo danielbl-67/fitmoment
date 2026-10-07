@@ -1,20 +1,27 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+export type LegalTab = 'aviso' | 'privacidad' | 'cancelaciones';
+
 @Component({
   selector: 'app-modal-legal',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './modal-legal.html',
-  styleUrls: ['./modal-legal.css']
+  styleUrl: './modal-legal.css'
 })
 
 export class ModalLegal {
-  // Permite que el padre le pase si está abierto, o abrirlo internamente
+  
   @Input() showLegalModal: boolean = false;
+  @Input() activeTab: LegalTab = 'aviso';
   @Output() onClose = new EventEmitter<void>();
 
-  closeModal() {
+  setTab(tab: LegalTab): void {
+    this.activeTab = tab;
+  }
+
+  closeModal(): void {
     this.showLegalModal = false;
     this.onClose.emit();
   }

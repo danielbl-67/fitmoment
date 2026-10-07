@@ -1,4 +1,4 @@
-<!-- BARRA DE NAVEGACIÓN MODULAR -->
+<!-- BARRA DE NAVEGACIÓN MODULAR FIJA -->
 <app-navbar></app-navbar>
 
 <!-- 1. SECCIÓN INICIO / HERO -->
@@ -53,8 +53,15 @@
   <app-asesoramiento (onSelect)="openModal($event)"></app-asesoramiento>
 </div>
 
-<!-- MODAL LEGAL -->
-<app-modal-legal [showLegalModal]="showLegalModal" (onClose)="showLegalModal = false"></app-modal-legal>
+<!-- COMPONENTE DE CONTACTO Y MAPA OFICIAL -->
+<app-contacto></app-contacto>
+
+<!-- MODAL LEGAL CON PESTAÑAS INDEPENDIENTES -->
+<app-modal-legal 
+  [showLegalModal]="showLegalModal" 
+  [activeTab]="activeLegalTab"
+  (onClose)="showLegalModal = false">
+</app-modal-legal>
 
 <!-- MODAL TRANSACCIONAL (CONFIGURACIÓN + ENVÍO A WHATSAPP) -->
 @if (selectedItem) {
@@ -143,9 +150,7 @@
   </div>
 }
 
-<app-contacto></app-contacto>
-
-<!-- FOOTER  -->
+<!-- FOOTER MEJORADO -->
 <footer class="main-footer">
   <div class="footer-glow-line"></div>
 
@@ -163,7 +168,7 @@
         Centro especializado en maximizar tu salud, fuerza y recuperación. Nutrición deportiva de precisión, fisioterapia avanzada y asesoramiento personalizado.
       </p>
       <div class="footer-badges">
-        <span class="badge-pill">📍 Gines, Sevilla</span>
+        <span class="badge-pill">📍 Espartinas, Sevilla</span>
         <span class="badge-pill">⚡ Atención 1 a 1</span>
       </div>
     </div>
@@ -199,22 +204,21 @@
       </div>
     </div>
 
-    
     <!-- Columna 4: Legal & Seguridad -->
     <div class="footer-col">
       <h4>Garantías & Legal</h4>
       <ul class="footer-list">
-        <li><button (click)="showLegalModal = true">Aviso Legal</button></li>
-        <li><button (click)="showLegalModal = true">Política de Privacidad</button></li>
-        <li><button (click)="showLegalModal = true">Condiciones de Cancelación (24h)</button></li>
+        <li><button (click)="openLegal('aviso')">Aviso Legal y LSSI-CE</button></li>
+        <li><button (click)="openLegal('privacidad')">Política de Privacidad (RGPD)</button></li>
+        <li><button (click)="openLegal('cancelaciones')">Condiciones de Cancelación (24h)</button></li>
       </ul>
       <div class="payment-note">
-        <span>🛡️ Pagos 100% seguros y transparentes abonados en el propio centro.</span>
+        <span>🛡️ Pagos 100% seguros abonados presencialmente en el propio centro.</span>
       </div>
     </div>
   </div>
 
-  <!-- Barra de Copyright inferior -->
+  <!-- Barra inferior -->
   <div class="footer-bottom-bar">
     <p>© 2026 Fit Moment. Todos los derechos reservados.</p>
     <p class="footer-made-with">Salud · Rendimiento · Fisioterapia Deportiva</p>
@@ -226,7 +230,7 @@
   <a href="https://wa.me/34638676954?text=Hola%20Fit%20Moment,%20tengo%20una%20consulta." target="_blank" class="bar-btn wa-btn">
     WhatsApp Directo
   </a>
-  <a href="https://maps.google.com/?q=Fit+Moment" target="_blank" class="bar-btn map-btn">
+  <a href="https://www.google.com/maps/place/Fit+Moment/@37.3828737,-6.0872817,17z/data=!3m1!4b1!4m6!3m5!1s0xd1213e16d5683bd:0xe74e4db6d64fc0ad!8m2!3d37.3828737!4d-6.0847068!16s%2Fg%2F11zysn59wr" target="_blank" class="bar-btn map-btn">
     Cómo Llegar
   </a>
 </aside>
